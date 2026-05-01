@@ -1,7 +1,9 @@
-# GSKE³ Platform
+# **G**SK e³ — Platform
 
-Internal umbrella platform for KGSK / Grün.Stadt.Klima e³ — five federated
-tools sharing one identity, one project record, one event bus.
+> Internal umbrella platform for **Grün.Stadt.Klima e³ GmbH (KGSK)** —
+> five federated tools sharing one identity, one project record, one event bus.
+>
+> *Grün · Stadt · Klima · Energie.*
 
 This repo is the **navigation layer**: architecture decisions, the L1 spine
 spec, the build plan. The actual code lives in the sibling repos under
@@ -87,3 +89,13 @@ When a sixth tool joins the platform, its onboarding looks like:
    row mapping its key to the SGP `building_id`.
 
 That's the protocol. No sixth shared service is needed.
+
+---
+
+## 🤝 Contact
+
+**Grün.Stadt.Klima e³ GmbH** · [kgsk.de](https://kgsk.de)
+Maintainer: Minka "Amin" Aduse-Poku — [ma@kgsk.de](mailto:ma@kgsk.de)
+Product owner: Peter Küsters
+
+> *Grün · Stadt · Klima · Energie.*
