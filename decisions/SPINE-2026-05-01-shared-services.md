@@ -76,6 +76,19 @@ A simple append-only event log. Every state change in any tool gets
 posted here. Other tools subscribe by polling (L1) or by webhook
 (L4+).
 
+**Phase 3.2 amendment — reactive side-effects:** the bus is also a
+fan-out point for selected event types. As of 2026-05-01:
+
+| Event | Trigger | Side-effect |
+|---|---|---|
+| `project.created` from `actor_tool != 'sgp'` | Brain creates a project | Bus inserts a matching row in SGP's `public.project` table (same `id`, name from payload, status=`draft`). Idempotent. Emits a follow-up `project.mirrored` event for timeline visibility. |
+
+This stays within the L1 spec ("append-only event log") because the
+side-effect is a *DB write inside the same transaction as the event
+write*, not a separate webhook delivery. No retry policy, no DLQ, no
+processed-flag tracking needed. If the request fails, both the event
+and the mirror are rolled back together.
+
 **Storage:** Postgres `bus.event` table, append-only.
 
 **Schema:**
